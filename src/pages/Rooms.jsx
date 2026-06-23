@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllRooms, getAvailableRooms } from '../services/api';
-import RoomCard from './Components/RoomCard';
+import RoomCard from '../Components/RoomCard';
 import { Search, Filter } from 'lucide-react';
 
 export default function Rooms() {
