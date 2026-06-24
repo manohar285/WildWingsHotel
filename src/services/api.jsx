@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// const API = axios.create({ baseURL: 'http://localhost:8080/api' });
-
-const API = axios.create({ baseURL: 'https://wildwingshotelbackend.onrender.com' });
+// 🟢 Fixed: Base URL now includes /api globally to perfectly match Spring Security
+const API = axios.create({ baseURL: 'https://wildwingshotelbackend.onrender.com/api' });
 
 // Attach JWT token if present
 API.interceptors.request.use(config => {
@@ -12,12 +11,12 @@ API.interceptors.request.use(config => {
 });
 
 // ─── Auth ─────────────────────────────────────────────────────────────────────
-export const register = data => API.post('/auth/register', data);
+export const register = data => API.post('/auth/register', data); // Automatically evaluates to /api/auth/register
 export const login    = data => API.post('/auth/login', data);
 
 // ─── Rooms ────────────────────────────────────────────────────────────────────
-export const getAllRooms = ()=> API.get('/api/rooms');
-export const getRoomById = id=> API.get(`/rooms/${id}`);
+export const getAllRooms = () => API.get('/rooms'); // 🟢 Fixed: Cleaned up from '/api/rooms'
+export const getRoomById = id => API.get(`/rooms/${id}`);
 export const getAvailableRooms = (checkIn, checkOut, guests) =>
   API.get('/rooms/available', { params: { checkIn, checkOut, guests } });
 
