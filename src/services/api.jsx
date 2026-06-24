@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:8080/api' });
+// const API = axios.create({ baseURL: 'http://localhost:8080/api' });
+
+const API = axios.create({ baseURL: 'https://wildwingshotelbackend.onrender.com/api' });
 
 // Attach JWT token if present
 API.interceptors.request.use(config => {
